@@ -1,12 +1,12 @@
 from flask import Flask, request, redirect, render_template, url_for
 import pickle
-import os
+# import os
 
 app = Flask(__name__)
 path = os.getcwd()
 # print(path)
-scaler_model_path = path + '\scaler_model.pickle'
-linear_regression_model_path = path + '\linear_regression_model.pickle'
+scaler_model_path = 'scaler_model.pickle'
+linear_regression_model_path = 'linear_regression_model.pickle'
 
 
 @app.route('/', methods=['GET', 'POST'])
