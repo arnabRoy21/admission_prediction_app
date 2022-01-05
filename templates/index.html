@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {% if title %}
+        {{ title }}
+    {% else %}
+        Prediction App
+    {% endif%}
+{% endblock %}
+
+{% block body %}
+    <h1>Admission Prediction App</h1>
+
+    <form action="/" class="web-form" method="POST">
+        <div class="container">
+            <input type="number" name="gre_score" placeholder='Enter GRE Score' class="input-field" required>
+            <input type="number" name="toefl_score" placeholder='Enter TOEFL Score' class="input-field" required>
+            <input type="number" name="univ_rating" placeholder='Enter University Rating' class="input-field" required>
+            <input type="number" name="sop" step="0.01" placeholder='Enter SOP' class="input-field" required>
+            <input type="number" name="lor" step="0.01" placeholder='Enter LOR' class="input-field" required>
+            <input type="number" name="cgpa" step="0.01" placeholder='Enter CGPA' class="input-field" required>
+            <input type="number" name="research" placeholder='Enter Research Value (0 or 1)' class="input-field" min="0" max="1" required>
+            <input type="submit" class="btn" value="Predict Chance of Admit">
+        </div>
+    </form>
+
+    {% if err_message %}
+    <div class="result">
+        <br><p>{{ err_message }}</p>
+    </div>
+    {% endif%}
+
+    {% if chance_of_admit %}
+        <div class="result">
+            <br><p>Chance of Admit is: {{ chance_of_admit }} % </p>
+        </div>
+    {% endif%}
+    
+{% endblock %}
